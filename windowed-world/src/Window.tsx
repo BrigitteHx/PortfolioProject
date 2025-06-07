@@ -8,6 +8,7 @@ interface WindowProps {
   onFocus: () => void;
   onClose: () => void;
   children: ReactNode;
+  style?: React.CSSProperties;  // style prop toegevoegd voor zIndex
 }
 
 export default function Window({
@@ -17,6 +18,7 @@ export default function Window({
   onFocus,
   onClose,
   children,
+  style,
 }: WindowProps) {
   return (
     <motion.div
@@ -34,7 +36,7 @@ export default function Window({
             : "border-gray-700 z-10"
         }
       `}
-      style={{ position: "absolute" }}
+      style={{ position: "absolute", ...style }}  // style nu hier toegevoegd
     >
       <div
         className="title-bar bg-blue-600 text-white px-3 py-1 cursor-move flex justify-between items-center"
