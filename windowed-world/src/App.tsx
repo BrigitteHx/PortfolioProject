@@ -5,49 +5,82 @@ interface WindowData {
   id: number;
   title: string;
   position: { x: number; y: number };
-  isOpen: boolean;
+  isFocused: boolean;
+  isMinimized: boolean;
 }
 
 export default function App() {
   const [windows, setWindows] = useState<WindowData[]>([
-    { id: 1, title: "About", position: { x: 100, y: 100 }, isOpen: true },
-    { id: 2, title: "Contact", position: { x: 300, y: 150 }, isOpen: true },
+    { id: 1, title: "About", position: { x: 100, y: 100 }, isFocused: true, isMinimized: false },
+    { id: 2, title: "Projects", position: { x: 300, y: 120 }, isFocused: false, isMinimized: false },
   ]);
 
-  // Houd een array bij van venster ID's die de stapelvolgorde bepaalt:
-  const [zOrder, setZOrder] = useState<number[]>(windows.map(w => w.id));
+  const focusWindow = (id: number) => {
+    setWindows((ws) =>
+      ws.map((w) => ({
+        ...w,
+        isFocused: w.id === id,
+      }))
+    );
+  };
 
-  function closeWindow(id: number) {
-    setWindows(ws => ws.map(w => (w.id === id ? { ...w, isOpen: false } : w)));
-    setZOrder(zs => zs.filter(zid => zid !== id));
-  }
+  const closeWindow = (id: number) => {
+    setWindows((ws) => ws.filter((w) => w.id !== id));
+  };
 
-  function focusWindow(id: number) {
-    setZOrder(zs => [...zs.filter(zid => zid !== id), id]); // Zet gefocust venster achteraan (bovenste)
-  }
+  const toggleMinimize = (id: number) => {
+    setWindows((ws) =>
+      ws.map((w) =>
+        w.id === id
+          ? { ...w, isMinimized: !w.isMinimized, isFocused: !w.isMinimized }
+          : w
+      )
+    );
+  };
+
+  const getZIndex = (id: number) => {
+    const focused = windows.find((w) => w.isFocused);
+    return focused?.id === id ? 100 : 10;
+  };
 
   return (
-    <div className="min-h-screen bg-gray-200 p-4 relative overflow-hidden">
-      <h1 className="text-2xl mb-6 text-center">Windowed World</h1>
-
-      {windows
-        .filter(w => w.isOpen)
-        .map(w => {
-          const zIndex = zOrder.indexOf(w.id) + 10; // basis z-index 10 + positie
-          return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-300 font-retro relative overflow-hidden">
+      {/* Render vensters */}
+      {windows.map(
+        (w) =>
+          !w.isMinimized && (
             <Window
               key={w.id}
               title={w.title}
               defaultPosition={w.position}
-              isFocused={zOrder[zOrder.length - 1] === w.id} // Is het bovenste venster?
+              isFocused={w.isFocused}
               onFocus={() => focusWindow(w.id)}
               onClose={() => closeWindow(w.id)}
-              style={{ zIndex }} // Geef z-index mee aan Window
+              style={{ zIndex: getZIndex(w.id) }}
             >
-              <p>Inhoud van venster "{w.title}"</p>
+              <p>Content van {w.title} hier!</p>
             </Window>
-          );
-        })}
+          )
+      )}
+
+      {/* Taskbar */}
+      <div className="fixed bottom-0 left-0 right-0 bg-black/80 backdrop-blur text-white px-4 py-2 flex gap-2 border-t border-gray-700 shadow-inner">
+        {windows.map((w) => (
+          <button
+            key={w.id}
+            onClick={() => toggleMinimize(w.id)}
+            className={`px-3 py-1 rounded border font-bold text-xs tracking-wide transition-all
+              ${
+                w.isMinimized
+                  ? "bg-gray-600 border-gray-500 hover:bg-gray-500"
+                  : "bg-blue-700 border-blue-600 hover:bg-blue-600"
+              }
+            `}
+          >
+            {w.title}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
