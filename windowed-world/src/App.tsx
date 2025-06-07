@@ -1,113 +1,98 @@
 import React, { useState } from "react";
-import Window from "./Window";
-import StartMenu from "./StartMenu";
+import Window from "./components/Window";
+import StartMenu from "./components/StartMenu";
+import Taskbar from "./components/Taskbar";
+import BootScreen from "./components/BootScreen";
 
-interface WindowState {
+interface WindowData {
   id: string;
   title: string;
-  content: React.ReactNode;
   position: { x: number; y: number };
-  visible: boolean;
+  content: React.ReactNode;
 }
 
+const idToTitle: Record<string, string> = {
+  about: "About Me",
+  skills: "Skills",
+  projects: "Projects",
+  contact: "Contact",
+};
+
+const idToContent: Record<string, React.ReactNode> = {
+  about: <p>Hoi! Ik ben een software developer met een passie voor UI/UX.</p>,
+  skills: (
+    <ul className="list-disc ml-4">
+      <li>TypeScript</li>
+      <li>React</li>
+      <li>Tailwind CSS</li>
+      <li>Node.js</li>
+    </ul>
+  ),
+  projects: <p>Hier komen je projecten te staan!</p>,
+  contact: <p>Je kunt me bereiken via LinkedIn of e-mail.</p>,
+};
+
 export default function App() {
-  const [windows, setWindows] = useState<WindowState[]>([
-    {
-      id: "about",
-      title: "About",
-      content: <p>Content van About hier!</p>,
-      position: { x: 100, y: 100 },
-      visible: true,
-    },
-    {
-      id: "projects",
-      title: "Projects",
-      content: <p>Content van Projects hier!</p>,
-      position: { x: 300, y: 150 },
-      visible: true,
-    },
-    {
-      id: "contact",
-      title: "Contact",
-      content: <p>Contactformulier komt hier</p>,
-      position: { x: 500, y: 200 },
-      visible: false,
-    },
-  ]);
+  const [booted, setBooted] = useState(false);
+  const [windows, setWindows] = useState<WindowData[]>([]);
+  const [focused, setFocused] = useState<string | null>(null);
+  const [startMenuOpen, setStartMenuOpen] = useState(false);
 
-  const [focusedId, setFocusedId] = useState<string | null>(null);
-  const [isMenuVisible, setMenuVisible] = useState(false);
+  const handleOpenWindow = (id: string) => {
+    const alreadyOpen = windows.some((w) => w.id === id);
 
-  const toggleMenu = () => setMenuVisible((prev) => !prev);
+    if (alreadyOpen) {
+      setFocused(id);
+      return;
+    }
 
-  const focusWindow = (id: string) => {
-    setFocusedId(id);
+    const newWindow: WindowData = {
+      id,
+      title: idToTitle[id],
+      position: {
+        x: 100 + windows.length * 40,
+        y: 100 + windows.length * 40,
+      },
+      content: idToContent[id],
+    };
+
+    setWindows([...windows, newWindow]);
+    setFocused(id);
   };
 
-  const closeWindow = (id: string) => {
-    setWindows((prev) =>
-      prev.map((w) =>
-        w.id === id ? { ...w, visible: false } : w
-      )
-    );
+  const handleCloseWindow = (id: string) => {
+    setWindows(windows.filter((w) => w.id !== id));
+    if (focused === id) {
+      setFocused(null);
+    }
   };
 
-  const openWindow = (id: string) => {
-    setWindows((prev) =>
-      prev.map((w) =>
-        w.id === id ? { ...w, visible: true } : w
-      )
-    );
-    setFocusedId(id);
-    setMenuVisible(false);
-  };
+  if (!booted) {
+    return <BootScreen onFinish={() => setBooted(true)} />;
+  }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-200 to-gray-300 font-retro relative overflow-hidden">
-      {windows.map(
-        (win) =>
-          win.visible && (
-            <Window
-              key={win.id}
-              title={win.title}
-              defaultPosition={win.position}
-              isFocused={focusedId === win.id}
-              onFocus={() => focusWindow(win.id)}
-              onClose={() => closeWindow(win.id)}
-            >
-              {win.content}
-            </Window>
-          )
-      )}
-
-      {/* Start-menu */}
-      <StartMenu isVisible={isMenuVisible} onOpenWindow={openWindow} />
-
-      {/* Taskbar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-gray-800 p-2 flex items-center gap-2 z-40">
-        <button
-          className="bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 text-xs rounded"
-          onClick={toggleMenu}
+    <div className="w-screen h-screen bg-gradient-to-br from-blue-200 to-white overflow-hidden relative">
+      {windows.map((w) => (
+        <Window
+          key={w.id}
+          title={w.title}
+          defaultPosition={w.position}
+          isFocused={focused === w.id}
+          onFocus={() => setFocused(w.id)}
+          onClose={() => handleCloseWindow(w.id)}
         >
-          Start
-        </button>
+          {w.content}
+        </Window>
+      ))}
 
-        {windows
-          .filter((w) => w.visible)
-          .map((w) => (
-            <button
-              key={w.id}
-              className={`px-3 py-1 text-xs rounded font-bold ${
-                focusedId === w.id
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-700 text-white"
-              }`}
-              onClick={() => focusWindow(w.id)}
-            >
-              {w.title}
-            </button>
-          ))}
-      </div>
+      <Taskbar onStartClick={() => setStartMenuOpen((v) => !v)} />
+
+      <StartMenu
+        isOpen={startMenuOpen}
+        onClose={() => setStartMenuOpen(false)}
+        onSelect={handleOpenWindow}
+      />
     </div>
   );
 }
