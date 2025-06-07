@@ -1,85 +1,112 @@
 import React, { useState } from "react";
 import Window from "./Window";
+import StartMenu from "./StartMenu";
 
-interface WindowData {
-  id: number;
+interface WindowState {
+  id: string;
   title: string;
+  content: React.ReactNode;
   position: { x: number; y: number };
-  isFocused: boolean;
-  isMinimized: boolean;
+  visible: boolean;
 }
 
 export default function App() {
-  const [windows, setWindows] = useState<WindowData[]>([
-    { id: 1, title: "About", position: { x: 100, y: 100 }, isFocused: true, isMinimized: false },
-    { id: 2, title: "Projects", position: { x: 300, y: 120 }, isFocused: false, isMinimized: false },
+  const [windows, setWindows] = useState<WindowState[]>([
+    {
+      id: "about",
+      title: "About",
+      content: <p>Content van About hier!</p>,
+      position: { x: 100, y: 100 },
+      visible: true,
+    },
+    {
+      id: "projects",
+      title: "Projects",
+      content: <p>Content van Projects hier!</p>,
+      position: { x: 300, y: 150 },
+      visible: true,
+    },
+    {
+      id: "contact",
+      title: "Contact",
+      content: <p>Contactformulier komt hier</p>,
+      position: { x: 500, y: 200 },
+      visible: false,
+    },
   ]);
 
-  const focusWindow = (id: number) => {
-    setWindows((ws) =>
-      ws.map((w) => ({
-        ...w,
-        isFocused: w.id === id,
-      }))
-    );
+  const [focusedId, setFocusedId] = useState<string | null>(null);
+  const [isMenuVisible, setMenuVisible] = useState(false);
+
+  const toggleMenu = () => setMenuVisible((prev) => !prev);
+
+  const focusWindow = (id: string) => {
+    setFocusedId(id);
   };
 
-  const closeWindow = (id: number) => {
-    setWindows((ws) => ws.filter((w) => w.id !== id));
-  };
-
-  const toggleMinimize = (id: number) => {
-    setWindows((ws) =>
-      ws.map((w) =>
-        w.id === id
-          ? { ...w, isMinimized: !w.isMinimized, isFocused: !w.isMinimized }
-          : w
+  const closeWindow = (id: string) => {
+    setWindows((prev) =>
+      prev.map((w) =>
+        w.id === id ? { ...w, visible: false } : w
       )
     );
   };
 
-  const getZIndex = (id: number) => {
-    const focused = windows.find((w) => w.isFocused);
-    return focused?.id === id ? 100 : 10;
+  const openWindow = (id: string) => {
+    setWindows((prev) =>
+      prev.map((w) =>
+        w.id === id ? { ...w, visible: true } : w
+      )
+    );
+    setFocusedId(id);
+    setMenuVisible(false);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-300 font-retro relative overflow-hidden">
-      {/* Render vensters */}
+    <div className="min-h-screen bg-gradient-to-b from-gray-200 to-gray-300 font-retro relative overflow-hidden">
       {windows.map(
-        (w) =>
-          !w.isMinimized && (
+        (win) =>
+          win.visible && (
             <Window
-              key={w.id}
-              title={w.title}
-              defaultPosition={w.position}
-              isFocused={w.isFocused}
-              onFocus={() => focusWindow(w.id)}
-              onClose={() => closeWindow(w.id)}
-              style={{ zIndex: getZIndex(w.id) }}
+              key={win.id}
+              title={win.title}
+              defaultPosition={win.position}
+              isFocused={focusedId === win.id}
+              onFocus={() => focusWindow(win.id)}
+              onClose={() => closeWindow(win.id)}
             >
-              <p>Content van {w.title} hier!</p>
+              {win.content}
             </Window>
           )
       )}
 
+      {/* Start-menu */}
+      <StartMenu isVisible={isMenuVisible} onOpenWindow={openWindow} />
+
       {/* Taskbar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-black/80 backdrop-blur text-white px-4 py-2 flex gap-2 border-t border-gray-700 shadow-inner">
-        {windows.map((w) => (
-          <button
-            key={w.id}
-            onClick={() => toggleMinimize(w.id)}
-            className={`px-3 py-1 rounded border font-bold text-xs tracking-wide transition-all
-              ${
-                w.isMinimized
-                  ? "bg-gray-600 border-gray-500 hover:bg-gray-500"
-                  : "bg-blue-700 border-blue-600 hover:bg-blue-600"
-              }
-            `}
-          >
-            {w.title}
-          </button>
-        ))}
+      <div className="fixed bottom-0 left-0 right-0 bg-gray-800 p-2 flex items-center gap-2 z-40">
+        <button
+          className="bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 text-xs rounded"
+          onClick={toggleMenu}
+        >
+          Start
+        </button>
+
+        {windows
+          .filter((w) => w.visible)
+          .map((w) => (
+            <button
+              key={w.id}
+              className={`px-3 py-1 text-xs rounded font-bold ${
+                focusedId === w.id
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-700 text-white"
+              }`}
+              onClick={() => focusWindow(w.id)}
+            >
+              {w.title}
+            </button>
+          ))}
       </div>
     </div>
   );
