@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes blob-custom {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+.animate-blob-custom {
+  animation: blob-custom 7s infinite;
+}
+
+.animation-delay-2000-custom {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000-custom {
+  animation-delay: 4s;
+}
+
+html {
+  scroll-behavior: smooth;
+  @apply antialiased; 
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+html.dark, html.light {
+  transition: background-color 0.3s ease;
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Voor shadow op kaarten die diepte geeft, zonder te donker te zijn */
+.shadow-custom-light {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.dark .shadow-custom-light {
+  box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05), 0 2px 4px -1px rgba(255, 255, 255, 0.02);
+}
+
+.shadow-custom-medium {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.dark .shadow-custom-medium {
+  box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.08), 0 4px 6px -2px rgba(255, 255, 255, 0.04);
+}
+
+.shadow-custom-strong {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.dark .shadow-custom-strong {
+  box-shadow: 0 20px 25px -5px rgba(255, 255, 255, 0.1), 0 10px 10px -5px rgba(255, 255, 255, 0.06);
+}
+
+:root {
+  --neutral-200: 224 8% 95%; 
+  --neutral-300: 224 8% 85%;
+  --neutral-400: 224 8% 70%;
+  --neutral-500: 224 8% 50%; 
+  --neutral-600: 224 8% 30%;
+  --neutral-700: 224 8% 20%;
+  --neutral-800: 224 8% 10%; 
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --neutral-200: 224 8% 20%;
+    --neutral-300: 224 8% 30%;
+    --neutral-400: 224 8% 40%;
+    --neutral-500: 224 8% 50%;
+    --neutral-600: 224 8% 60%;
+    --neutral-700: 224 8% 70%;
+    --neutral-800: 224 8% 80%;
+  }
+}
+
+.card-shadow-soft {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+.dark .card-shadow-soft {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-shadow-medium-complex {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.dark .card-shadow-medium-complex {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.12);
+}
+
+:root {
+  --ring-color-blue-purple: 0 0% 100%; /* Dit wordt overschreven door een gradiënt in de component */
+}
+
+.dark .ring-color-blue-purple-gradient {
+  --tw-ring-color: linear-gradient(to right, #6366f1, #a855f7);
+}
+.ring-color-blue-purple-gradient {
+  --tw-ring-color: linear-gradient(to right, #3b82f6, #8b5cf6);
+}
+
+@keyframes border-pulse {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-border-pulse {
+  background-size: 200% 200%;
+  animation: border-pulse 4s linear infinite;
+}
