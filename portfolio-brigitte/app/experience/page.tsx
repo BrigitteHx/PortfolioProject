@@ -1,7 +1,7 @@
 // app/experience/page.tsx
 import React from 'react';
-import { Timeline } from '@/components/sections/Timeline'; 
-import { experienceData } from '@/data/experience'; 
+import Timeline from '@/components/sections/Timeline'; // Let op: default import
+import { experienceData } from '@/data/experience';
 
 export default function ExperiencePage() {
   return (
