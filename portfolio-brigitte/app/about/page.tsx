@@ -180,13 +180,12 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Language Proficiency</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-2xl mx-auto"> {/* max-w-2xl voor meer ruimte */}
                 {[
-                    { language: "English", rating: 4 },
                     { language: "Dutch", rating: 5 },
+                    { language: "English", rating: 4 },
                     { language: "German", rating: 3 },
                     { language: "French", rating: 3 },
                     { language: "Italian", rating: 1 },
                     { language: "Portuguese", rating: 1 },
-                    { language: "Danish", rating: 1 },
                 ].map((lang, index) => (
                     <motion.div
                         key={lang.language}

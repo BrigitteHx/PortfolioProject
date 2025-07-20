@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { Mail, Linkedin, Phone, CheckCircle, XCircle } from 'lucide-react'; // Icons
+import { Mail, Linkedin, Phone, CheckCircle, XCircle, Github } from 'lucide-react'; // Icons
 
 export default function ContactPage() {
   const [formStatus, setFormStatus] = useState<'' | 'success' | 'error'>('');
@@ -84,6 +84,16 @@ export default function ContactPage() {
               <div>
                 <p className="font-semibold text-lg">Business Email</p>
                 <a href="mailto:brigitte.dev@gmail.com" className="text-base hover:underline break-all">brigitte.dev@gmail.com</a>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-4 text-gray-700 dark:text-gray-300">
+              <Github size={28} className="text-blue-600 dark:text-blue-400 flex-shrink-0" />
+              <div>
+                <p className="font-semibold text-lg">View on GitHub</p>
+                <Link href="https://github.com/BrigitteHx" target="_blank" rel="noopener noreferrer" className="text-base hover:underline break-all">
+                  github.com/BrigitteHx
+                </Link>
               </div>
             </div>
 
