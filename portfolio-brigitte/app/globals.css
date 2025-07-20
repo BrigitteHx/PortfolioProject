@@ -150,3 +150,7 @@ html.dark, html.light {
   background-size: 200% 200%;
   animation: border-pulse 4s linear infinite;
 }
+
+.pause-animation:hover {
+  animation-play-state: paused !important; /* Forceert pauze op hover */
+}
