@@ -119,26 +119,49 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
 {/* Project Links */}
 <div className="mt-8 flex flex-wrap gap-4">
   {project.liveDemoUrl && (
-    <Link href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer"
-          className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-      <ExternalLink size={20} /> Live Demo
+    <Link
+      href={project.liveDemoUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+    >
+      <ExternalLink size={20} />
+      {/* Conditionele tekst voor de Live Demo knop */}
+      {project.id === "project-2-portfolio" ? "This Website!" : "Live Demo"}
     </Link>
   )}
   {project.linkedinPostUrl && (
-    <Link href={project.linkedinPostUrl} target="_blank" rel="noopener noreferrer"
-          className="flex items-center gap-2 px-6 py-3 bg-gray-700 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+    <Link
+      href={project.linkedinPostUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-2 px-6 py-3 bg-gray-700 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+    >
       <Linkedin size={20} /> LinkedIn Post
     </Link>
   )}
+  {project.githubUrl && (
+    <Link
+      href={project.githubUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-2 px-6 py-3 bg-gray-700 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+    >
+      <Github size={20} /> GitHub Repo
+    </Link>
+  )}
   {project.downloadPdfUrl && (
-    <a href={project.downloadPdfUrl} download
-       className="flex items-center gap-2 px-6 py-3 bg-gray-700 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+    <a
+      href={project.downloadPdfUrl}
+      download
+      className="flex items-center gap-2 px-6 py-3 bg-gray-700 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+    >
       <BookOpen size={20} /> Download Document
     </a>
   )}
 </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
+</div>
+</div>  
+</motion.div>
+);
+}

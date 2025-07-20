@@ -75,6 +75,37 @@ export const projectsData: ProjectItem[] = [
     imageUrl: "/portfolio-screenshot.png", // <--- PLAATS HIER EEN SCREENSHOT VAN JE EIGEN PORTFOLIO
     githubUrl: "https://github.com/BrigitteHx/PortfolioProject", // <--- LINK NAAR JE PORTFOLIO REPO
     downloadPdfUrl: "/documents/Brigitte_Heijkoop_CV.pdf", // <--- LINK NAAR JE CV PDF
+    liveDemoUrl: "XXX",
     isFeatured: false, // Dit is geen "featured" project op dezelfde manier als de simulator
+  },
+{
+    id: "project-3-laravel", // Unieke ID
+    title: "Laravel Applications Collection",
+    subtitle: "Web Applications with PHP & Laravel Framework",
+    description: (
+      <>
+        <p className="text-sm md:text-base text-neutral-700 dark:text-neutral-300 mb-4">
+          A collection of web applications developed using PHP and the Laravel framework.
+          These projects demonstrate various aspects of full-stack web development,
+          including database interactions, user authentication, and interactive features.
+        </p>
+      </>
+    ),
+    technologies: [
+      "PHP", "Laravel", "Blade Templating", "Livewire", "MySQL", "PHPMyAdmin",
+      "HTML", "CSS", "Bootstrap", "JavaScript"
+    ],
+    features: [
+      "Book Review System",
+      "Event Management Platform",
+      "Job Board Application",
+      "Real-time Livewire Poll App",
+      "Task/To-Do List Manager",
+      "User Authentication & Authorization",
+      "CRUD Operations"
+    ],
+    imageUrl: "/laravel-apps-screenshot.png", // <-- PLAATS HIER EEN OVERZICHTSSCREENSHOT VAN JE LARAVEL APPS
+    githubUrl: "https://github.com/BrigitteHx/LaravelShowcase", // <--- LINK NAAR JE LARAVEL REPO (of een collectie/monorepo)
+    isFeatured: false,
   },
 ];
