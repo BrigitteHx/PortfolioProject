@@ -1,6 +1,6 @@
 // data/projects.ts
 import React from "react";
-import Image from "next/image"; // Zorg dat deze import bovenaan staat
+import Image from "next/image";
 
 export interface ProjectItem {
   id: string;
@@ -8,12 +8,13 @@ export interface ProjectItem {
   subtitle: string;
   description: React.ReactNode;
   technologies: string[];
-  features: string[];
+  features: string[]; // Lijst van gerealiseerde features
   imageUrl: string; // URL naar een projectafbeelding
-  liveDemoUrl?: string;
-  githubUrl?: string;
-  documentsUrl?: string;
-  isFeatured?: boolean;
+  liveDemoUrl?: string; // Optioneel: link naar live demo
+  githubUrl?: string; // Optioneel: link naar GitHub repo
+  linkedinPostUrl?: string; // NIEUW: Optioneel: link naar LinkedIn post
+  downloadPdfUrl?: string; // NIEUW: Optioneel: link naar downloadbare PDF
+  isFeatured?: boolean; // Om een project extra uit te lichten
 }
 
 export const projectsData: ProjectItem[] = [
@@ -42,26 +43,38 @@ export const projectsData: ProjectItem[] = [
       "FAQ", "Login/Logout & Password Reset", "Simulation Dashboard (Interactive Graphs)",
       "User Account Management", "Welcome Page"
     ],
-    imageUrl: "/depot-simulator-screenshot.png", // <--- DIT IS HET CORRECTE PAD
-    liveDemoUrl: "JOUW_LIVE_DEMO_URL_HIER", // Vervang door je live demo URL
-    githubUrl: "https://github.com/BrigitteHx/20WekenProject.git", // Jouw GitHub repo
-    documentsUrl: "JOUW_DOCUMENTATIE_URL_HIER", // Optioneel: Link naar opleverdocument/documentatie
+    imageUrl: "/depot-simulator-screenshot.png",
+    liveDemoUrl: "https://brigittehx.github.io/DemoDepot/",
+    githubUrl: "https://github.com/BrigitteHx/20WekenProject.git", // GitHub URL blijft hier, voor als je die toch wilt laten zien
+    linkedinPostUrl: "https://www.linkedin.com/posts/activity-7295882286145720320-9QyP?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEKSdeUByppUsmVdIKsQNwpm25ja1zt_st8", // <--- NIEUWE LINKEDIN POST URL
+    downloadPdfUrl: "/documents/opleverdocument.pdf", // <--- NIEUWE PDF DOWNLOAD URL (Plaats je PDF hier!)
     isFeatured: true,
   },
-  // {
-  //   id: "project-2-personal",
-  //   title: "My Portfolio Website",
-  //   subtitle: "React & Tailwind CSS",
-  //   description: (
-  //     <p className="text-sm md:text-base text-neutral-700 dark:text-neutral-300">
-  //       This very website, showcasing my skills and projects using modern web technologies.
-  //     </p>
-  //   ),
-  //   technologies: ["Next.js", "React.js", "Tailwind CSS", "Framer Motion"],
-  //   features: ["Responsive Design", "Interactive UI", "Dark Mode (future)"],
-  //   imageUrl: "/images/portfolio-screenshot.png", // Screenshot van je portfolio
-  //   githubUrl: "https://github.com/BrigitteHx/YOUR_PORTFOLIO_REPO",
-  //   liveDemoUrl: "https://your-portfolio-url.com",
-  //   isFeatured: false,
-  // },
+  {
+    id: "project-2-portfolio", // Unieke ID
+    title: "My Developer Portfolio",
+    subtitle: "Modern Web Showcase (Self-Built)",
+    description: (
+      <>
+        <p className="text-sm md:text-base text-neutral-700 dark:text-neutral-300 mb-4">
+          This very website serves as my personal developer portfolio, designed and built from scratch
+          to showcase my technical skills, projects, and professional journey. It leverages modern
+          web development practices to create a dynamic, responsive, and visually appealing user experience.
+        </p>
+      </>
+    ),
+    technologies: [
+      "Next.js", "React.js", "Tailwind CSS", "Framer Motion", "TypeScript",
+      "Responsive Design", "UI/UX Principles"
+    ],
+    features: [
+      "Dynamic Routing", "Interactive Sidebar Navigation", "Animated Hero Section",
+      "Scroll-Driven Timeline", "Animated Skill Cards", "Responsive Project Showcase",
+      "Dark Mode Support (planned/future)", "Downloadable CV/Documents"
+    ],
+    imageUrl: "/portfolio-screenshot.png", // <--- PLAATS HIER EEN SCREENSHOT VAN JE EIGEN PORTFOLIO
+    githubUrl: "https://github.com/BrigitteHx/PortfolioProject", // <--- LINK NAAR JE PORTFOLIO REPO
+    downloadPdfUrl: "/documents/Brigitte_Heijkoop_CV.pdf", // <--- LINK NAAR JE CV PDF
+    isFeatured: false, // Dit is geen "featured" project op dezelfde manier als de simulator
+  },
 ];

@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence, cubicBezier } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Github, ExternalLink, BookOpen, Check } from "lucide-react"; // Icons voor links en features
+import { Github, ExternalLink, BookOpen, Check, Linkedin } from "lucide-react"; // Voeg Linkedin toe
 
 import { projectsData, ProjectItem } from "@/data/projects";
 
@@ -116,28 +116,27 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
               ))}
             </ul>
           </div>
-
-          {/* Project Links */}
-          <div className="mt-8 flex flex-wrap gap-4">
-            {project.liveDemoUrl && (
-              <Link href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-200 shadow-md">
-                <ExternalLink size={20} /> Live Demo
-              </Link>
-            )}
-            {project.githubUrl && (
-              <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 bg-gray-700 text-white rounded-full hover:bg-gray-800 transition-colors duration-200 shadow-md">
-                <Github size={20} /> GitHub Repo
-              </Link>
-            )}
-            {project.documentsUrl && (
-              <Link href={project.documentsUrl} target="_blank" rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors duration-200 shadow-md">
-                <BookOpen size={20} /> Documentation
-              </Link>
-            )}
-          </div>
+{/* Project Links */}
+<div className="mt-8 flex flex-wrap gap-4">
+  {project.liveDemoUrl && (
+    <Link href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer"
+          className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+      <ExternalLink size={20} /> Live Demo
+    </Link>
+  )}
+  {project.linkedinPostUrl && (
+    <Link href={project.linkedinPostUrl} target="_blank" rel="noopener noreferrer"
+          className="flex items-center gap-2 px-6 py-3 bg-gray-700 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+      <Linkedin size={20} /> LinkedIn Post
+    </Link>
+  )}
+  {project.downloadPdfUrl && (
+    <a href={project.downloadPdfUrl} download
+       className="flex items-center gap-2 px-6 py-3 bg-gray-700 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+      <BookOpen size={20} /> Download Document
+    </a>
+  )}
+</div>
         </div>
       </div>
     </motion.div>
