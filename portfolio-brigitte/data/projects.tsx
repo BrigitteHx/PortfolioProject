@@ -104,8 +104,8 @@ export const projectsData: ProjectItem[] = [
       "User Authentication & Authorization",
       "CRUD Operations"
     ],
-    imageUrl: "/laravel-apps-screenshot.png", // <-- PLAATS HIER EEN OVERZICHTSSCREENSHOT VAN JE LARAVEL APPS
-    githubUrl: "https://github.com/BrigitteHx/LaravelShowcase", // <--- LINK NAAR JE LARAVEL REPO (of een collectie/monorepo)
+    imageUrl: "/laravel-apps-screenshot.jpg", 
+    githubUrl: "https://github.com/BrigitteHx/LaravelShowcase", 
     isFeatured: false,
   },
 ];
