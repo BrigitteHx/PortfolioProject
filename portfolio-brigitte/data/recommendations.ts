@@ -2,15 +2,15 @@
 export interface RecommendationQuote {
   quote: string;
   author: string;
-  title: string; // Functie/relatie van de auteur
+  title: string; 
 }
 
 export interface FullRecommendation {
-  id: string; // Unieke ID voor de sleutel
+  id: string; 
   company: string;
-  role: string; // Jouw rol tijdens deze aanbeveling
-  date?: string; // Optioneel: Datum van de aanbeveling
-  pdfUrl: string; // Pad naar de PDF in de public/documents map
+  role: string; 
+  date?: string; 
+  pdfUrl: string; 
 }
 
 export const recommendationQuotes: RecommendationQuote[] = [
@@ -52,14 +52,13 @@ export const fullRecommendations: FullRecommendation[] = [
     company: "Lucrasoft ICT Groep (DEPOT)",
     role: "Full-stack Software Development, Scrum Coordinator",
     date: "February 2025",
-    pdfUrl: "/documents/recommendations/Recommendation_Lucrasoft_DEPOT.pdf", // <--- PLAATS HIER DE PDF
+    pdfUrl: "/documents/recommendations/Recommendation_Lucrasoft_DEPOT.pdf", 
   },
   {
     id: "rec-1-mod",
     company: "Ministry of Defence",
     role: "Full-stack Software Development Intern",
     date: "January 2024",
-    pdfUrl: "/documents/recommendations/Recommendation_MOD_Internship.pdf", // <--- PLAATS HIER DE PDF
+    pdfUrl: "/documents/recommendations/Recommendation_MOD_Internship.pdf", 
   },
-  // Voeg meer volledige aanbevelingen toe!
 ];

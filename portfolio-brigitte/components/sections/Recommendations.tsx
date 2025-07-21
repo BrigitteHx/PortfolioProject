@@ -4,21 +4,20 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence, cubicBezier } from "framer-motion";
 import Link from "next/link";
-import { ChevronDown, FileText } from "lucide-react"; // Icons voor accordion en download
-import { InfiniteMovingCards } from "@/components/ui/InfiniteMovingCards"; // Importeer je nieuwe component
-import { recommendationQuotes, fullRecommendations, FullRecommendation } from "@/data/recommendations"; // Importeer je data
+import { ChevronDown, FileText } from "lucide-react"; 
+import { InfiniteMovingCards } from "@/components/ui/InfiniteMovingCards"; 
+import { recommendationQuotes, fullRecommendations, FullRecommendation } from "@/data/recommendations"; 
 
 interface RecommendationsProps {}
 
 export default function Recommendations({}: RecommendationsProps) {
   return (
-    <section className="py-16 bg-neutral-100 dark:bg-neutral-950 min-h-screen"> {/* Aangepaste achtergrond */}
+    <section className="py-16 bg-neutral-100 dark:bg-neutral-950 min-h-screen"> 
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-5xl md:text-6xl font-extrabold text-center mb-16 text-gray-800 dark:text-white">
           What Others Say
         </h2>
 
-        {/* Infinite Moving Cards voor Quotes */}
         <div className="mb-16">
           <h3 className="text-3xl font-bold text-center mb-8 text-gray-700 dark:text-gray-300">Quick Impressions</h3>
           <InfiniteMovingCards
@@ -30,7 +29,6 @@ export default function Recommendations({}: RecommendationsProps) {
           />
         </div>
 
-        {/* Accordion voor Volledige Aanbevelingen (PDF Downloads) */}
         <div className="mb-16">
           <h3 className="text-3xl font-bold text-center mb-8 text-gray-700 dark:text-gray-300">Full Recommendations (PDF)</h3>
           <div className="max-w-3xl mx-auto space-y-4">
@@ -82,7 +80,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ recommendation, index }) 
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }} // Standaard ease, geen cubicBezier hier
+            transition={{ duration: 0.3, ease: "easeInOut" }} 
             className="p-5 border-t border-gray-200 dark:border-gray-700"
           >
             <p className="text-gray-700 dark:text-gray-300 mb-4">

@@ -1,10 +1,10 @@
 // app/contact/page.tsx
-"use client"; // Deze component gebruikt useState en Formspree, dus Client Component
+"use client";
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { Mail, Linkedin, Phone, CheckCircle, XCircle, Github } from 'lucide-react'; // Icons
+import { Mail, Linkedin, Phone, CheckCircle, XCircle, Github } from 'lucide-react'; 
 
 export default function ContactPage() {
   const [formStatus, setFormStatus] = useState<'' | 'success' | 'error'>('');
@@ -14,9 +14,7 @@ export default function ContactPage() {
   const FORM_ENDPOINT = "https://formspree.io/f/mwpqvnrl"; 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormStatus(''); // Reset status
-
-    // Simpele validatie
+    setFormStatus(''); 
     if (!formData.name || !formData.email || !formData.message) {
       setFormStatus('error');
       return;
@@ -34,10 +32,9 @@ export default function ContactPage() {
 
       if (response.ok) {
         setFormStatus('success');
-        setFormData({ name: '', email: '', message: '' }); // Formulier leegmaken
+        setFormData({ name: '', email: '', message: '' }); 
       } else {
         setFormStatus('error');
-        // Optioneel: Log de response.json() voor debugging
       }
     } catch (error) {
       console.error('Form submission error:', error);
@@ -61,7 +58,6 @@ export default function ContactPage() {
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 text-left items-start">
-          {/* Contact Details */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -114,7 +110,6 @@ export default function ContactPage() {
             </div>
           </motion.div>
 
-          {/* Contact Formulier */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -172,7 +167,6 @@ export default function ContactPage() {
               </motion.button>
             </form>
 
-            {/* Formulier Statusberichten */}
             <AnimatePresence>
               {formStatus === 'success' && (
                 <motion.div

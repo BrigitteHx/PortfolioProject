@@ -1,12 +1,11 @@
 // app/about/page.tsx
 "use client";
 
-import React, { useState } from 'react'; // useState is nu nodig voor hover effecten
+import React, { useState } from 'react'; 
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion'; // AnimatePresence ook toegevoegd
-import { Star, StarHalf, Circle } from 'lucide-react'; // Circle icon voor de What Drives Me dots
+import { motion, AnimatePresence } from 'framer-motion'; 
+import { Star, StarHalf, Circle } from 'lucide-react'; 
 
-// Helper component om sterren te renderen (licht aangepast)
 const StarRating = ({ rating }: { rating: number }) => {
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 !== 0;
@@ -27,7 +26,6 @@ const StarRating = ({ rating }: { rating: number }) => {
 
 
 export default function AboutPage() {
-  // Staat voor hover-effect op de profielfoto
   const [isPhotoHovered, setIsPhotoHovered] = useState(false);
 
   return (
@@ -38,7 +36,6 @@ export default function AboutPage() {
         </h1>
 
         <div className="flex flex-col md:flex-row items-center md:items-start gap-10">
-          {/* Jouw Profielfoto - VERFIJNDE STYLING */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -49,7 +46,7 @@ export default function AboutPage() {
             onHoverStart={() => setIsPhotoHovered(true)}
             onHoverEnd={() => setIsPhotoHovered(false)}
           >
-            {/* Achtergrond gradiënt die pulseert op hover (net als Skills card) */}
+
             <AnimatePresence>
               {isPhotoHovered && (
                 <motion.div
@@ -63,7 +60,6 @@ export default function AboutPage() {
               )}
             </AnimatePresence>
             
-            {/* Foto Container - met een schaduw die de glow reflecteert */}
             <div className="relative rounded-full border-4 border-gray-200 dark:border-gray-700
                             shadow-lg group-hover:shadow-xl transition-shadow duration-300 z-10">
               <Image
@@ -76,7 +72,6 @@ export default function AboutPage() {
             </div>
           </motion.div>
 
-          {/* De Tekstinhoud */}
           <div className="flex-grow text-lg leading-relaxed">
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -111,7 +106,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* What Drives Me Section - VERFIJNDE STYLING */}
         <div className="mt-16 text-center">
             <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">What Drives Me</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
@@ -125,18 +119,15 @@ export default function AboutPage() {
                                border border-gray-200 dark:border-gray-700
                                group overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
                 >
-                    {/* Bovenste dot voor decoratie */}
+
                     <Circle size={24} className="absolute top-4 left-4 text-blue-500 opacity-70 group-hover:opacity-100 transition-opacity duration-300" fill="currentColor" />
-                    
                     <h3 className="text-xl font-semibold mb-2 mt-8 text-gray-800 dark:text-white">Continuous Learning</h3>
                     <p className="text-gray-700 dark:text-gray-300">
                         The tech landscape is always evolving, and I&apos;m passionate about staying current with new technologies and best practices. I actively seek out courses, read industry blogs, and experiment with new tools.
                     </p>
-                    {/* Subtiele achtergrond gradiënt op hover */}
                     <div className="absolute inset-0 bg-gradient-to-br from-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
                 </motion.div>
 
-                {/* Kaart 2 */}
                 <motion.div
                     initial={{ opacity: 0, y: 20, scale: 0.95 }}
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -146,20 +137,17 @@ export default function AboutPage() {
                                border border-gray-200 dark:border-gray-700
                                group overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
                 >
-                    {/* Bovenste dot voor decoratie */}
                     <Circle size={24} className="absolute top-4 left-4 text-purple-500 opacity-70 group-hover:opacity-100 transition-opacity duration-300" fill="currentColor" />
                     
                     <h3 className="text-xl font-semibold mb-2 mt-8 text-gray-800 dark:text-white">Collaborative Innovation</h3>
                     <p className="text-gray-700 dark:text-gray-300">
                         I believe the best solutions come from diverse perspectives and strong teamwork. I enjoy contributing to a positive team dynamic and fostering an environment where ideas can flourish.
                     </p>
-                    {/* Subtiele achtergrond gradiënt op hover */}
                     <div className="absolute inset-0 bg-gradient-to-br from-transparent to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></div>
                 </motion.div>
             </div>
         </div>
 
-        {/* Beyond Code Section */}
         <div className="mt-16 text-center">
             <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Beyond Code</h2>
             <motion.p
@@ -175,10 +163,9 @@ export default function AboutPage() {
             </motion.p>
         </div>
 
-        {/* Language Proficiency - OPGEFLEURD & GROTER */}
         <div className="mt-16 text-center">
             <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Language Proficiency</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-2xl mx-auto"> {/* max-w-2xl voor meer ruimte */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-2xl mx-auto"> 
                 {[
                     { language: "Dutch", rating: 5 },
                     { language: "English", rating: 4 },
@@ -196,16 +183,15 @@ export default function AboutPage() {
                         className="bg-gray-50 dark:bg-gray-800 p-5 rounded-lg shadow-md flex flex-col items-center justify-center
                                    border border-gray-200 dark:border-gray-700
                                    transition-all duration-300 hover:scale-[1.03] hover:shadow-xl
-                                   min-h-[100px]" // Min-hoogte om de boxen gelijk te houden
+                                   min-h-[100px]" 
                     >
-                        <span className="text-xl font-medium mb-2 text-gray-800 dark:text-white">{lang.language}</span> {/* Grotere tekst */}
+                        <span className="text-xl font-medium mb-2 text-gray-800 dark:text-white">{lang.language}</span> 
                         <StarRating rating={lang.rating} />
                     </motion.div>
                 ))}
             </div>
         </div>
-
-      </div> {/* End of max-w-4xl mx-auto */}
+      </div> 
     </div>
   );
 }

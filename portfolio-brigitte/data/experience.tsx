@@ -14,7 +14,7 @@ export interface TimelineEntry {
 export const experienceData: TimelineEntry[] = [
   {
     id: "exp-1",
-    title: "Juli 2025 - Now",
+    title: "July 2025 - Now",
     content: (
       <div>
         <p className="text-neutral-800 dark:text-neutral-200 text-sm font-normal mb-2">

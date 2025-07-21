@@ -1,7 +1,7 @@
 // app/projects/page.tsx
 import React from 'react';
-import Projects from '@/components/sections/Projects'; // Importeer je Projects component
-import { projectsData } from '@/data/projects'; // Importeer je data
+import Projects from '@/components/sections/Projects'; 
+import { projectsData } from '@/data/projects';
 
 export default function ProjectsPage() {
   return (

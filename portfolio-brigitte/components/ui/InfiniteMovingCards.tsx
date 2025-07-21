@@ -93,26 +93,22 @@ export const InfiniteMovingCards = ({
                        dark:from-blue-700 dark:to-purple-900 group flex-shrink-0"
             key={idx}
           >
-            {/* GLOWING BORDER EFFECT ON HOVER (zoals bij Skills) */}
             <div className="absolute inset-0 rounded-xl pointer-events-none z-0">
                 <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }} // Deze wordt altijd 1 voor pulse
-                transition={{ duration: 0.3 }} // Transition op de inner div
+                animate={{ opacity: 1 }} 
+                transition={{ duration: 0.3 }} 
                 className="absolute inset-0 rounded-xl bg-[linear-gradient(to_right,rgba(60,0,255,0.4),rgba(100,0,255,0.4),rgba(60,0,255,0.4))] dark:bg-[linear-gradient(to_right,rgba(60,0,255,0.5),rgba(168,85,247,0.5),rgba(60,0,255,0.5))] animate-border-pulse transition-opacity duration-300 z-0 opacity-0 group-hover:opacity-100"
                 ></motion.div>
             </div>
             
-            {/* Innerlijke kaart met content */}
             <div className="relative bg-white dark:bg-gray-800 rounded-xl h-full p-6 md:p-8 border border-neutral-200 dark:border-neutral-700 flex flex-col justify-between
                             shadow-custom-medium transition-transform duration-300 transform group-hover:scale-[1.01] group-hover:shadow-custom-strong">
                 <blockquote className="relative z-10 flex flex-col justify-between h-full">
-                    {/* Quote tekst */}
                     <p className="text-base md:text-lg leading-relaxed font-normal text-neutral-700 dark:text-neutral-300 mb-6">
                         &ldquo;{item.quote}&rdquo;
                     </p>
                     
-                    {/* Auteur en Titel */}
                     <div className="flex flex-col gap-1 mt-auto">
                         <cite className="text-base font-semibold leading-none text-neutral-900 dark:text-white">
                             {item.author}

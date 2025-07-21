@@ -1,7 +1,6 @@
 // app/experience/page.tsx
 import React from 'react';
-// DEZE REGEL MOET WORDEN GEWIJZIGD:
-import { Timeline } from '@/components/sections/Timeline'; // Let op de accolades { Timeline }
+import { Timeline } from '@/components/sections/Timeline'; 
 import { experienceData } from '@/data/experience';
 
 export default function ExperiencePage() {

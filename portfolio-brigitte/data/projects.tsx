@@ -8,13 +8,13 @@ export interface ProjectItem {
   subtitle: string;
   description: React.ReactNode;
   technologies: string[];
-  features: string[]; // Lijst van gerealiseerde features
-  imageUrl: string; // URL naar een projectafbeelding
-  liveDemoUrl?: string; // Optioneel: link naar live demo
-  githubUrl?: string; // Optioneel: link naar GitHub repo
-  linkedinPostUrl?: string; // NIEUW: Optioneel: link naar LinkedIn post
-  downloadPdfUrl?: string; // NIEUW: Optioneel: link naar downloadbare PDF
-  isFeatured?: boolean; // Om een project extra uit te lichten
+  features: string[]; 
+  imageUrl: string; 
+  liveDemoUrl?: string; 
+  githubUrl?: string; 
+  linkedinPostUrl?: string; 
+  downloadPdfUrl?: string; 
+  isFeatured?: boolean; 
 }
 
 export const projectsData: ProjectItem[] = [
@@ -45,13 +45,13 @@ export const projectsData: ProjectItem[] = [
     ],
     imageUrl: "/depot-simulator-screenshot.png",
     liveDemoUrl: "https://brigittehx.github.io/DemoDepot/",
-    githubUrl: "https://github.com/BrigitteHx/DemoDepot", // GitHub URL blijft hier, voor als je die toch wilt laten zien
+    githubUrl: "https://github.com/BrigitteHx/DemoDepot", 
     linkedinPostUrl: "https://www.linkedin.com/posts/activity-7295882286145720320-9QyP?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEKSdeUByppUsmVdIKsQNwpm25ja1zt_st8", // <--- NIEUWE LINKEDIN POST URL
-    downloadPdfUrl: "/documents/opleverdocument.pdf", // <--- NIEUWE PDF DOWNLOAD URL (Plaats je PDF hier!)
+    downloadPdfUrl: "/documents/opleverdocument.pdf",
     isFeatured: true,
   },
   {
-    id: "project-2-portfolio", // Unieke ID
+    id: "project-2-portfolio", 
     title: "My Developer Portfolio",
     subtitle: "Modern Web Showcase (Self-Built)",
     description: (
@@ -72,13 +72,13 @@ export const projectsData: ProjectItem[] = [
       "Scroll-Driven Timeline", "Animated Skill Cards", "Responsive Project Showcase",
       "Dark Mode Support (planned/future)", "Downloadable CV/Documents"
     ],
-    imageUrl: "/portfolio-screenshot.png", // <--- PLAATS HIER EEN SCREENSHOT VAN JE EIGEN PORTFOLIO
-    githubUrl: "https://github.com/BrigitteHx/PortfolioProject", // <--- LINK NAAR JE PORTFOLIO REPO
+    imageUrl: "/portfolio-screenshot.png", 
+    githubUrl: "https://github.com/BrigitteHx/PortfolioProject", 
     liveDemoUrl: "XXX",
-    isFeatured: false, // Dit is geen "featured" project op dezelfde manier als de simulator
+    isFeatured: false, 
   },
 {
-    id: "project-3-laravel", // Unieke ID
+    id: "project-3-laravel", 
     title: "Laravel Applications Collection",
     subtitle: "Web Applications with PHP & Laravel Framework",
     description: (
