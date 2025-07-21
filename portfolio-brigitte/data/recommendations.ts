@@ -30,16 +30,6 @@ export const recommendationQuotes: RecommendationQuote[] = [
     title: "Managing Director DEPOT",
   },
   {
-    quote: "As a Scrum Coordinator, Brigitte showed excellent organizational skills, keeping our project on track and ensuring smooth communication within the team. Her proactive approach was invaluable.",
-    author: "Project Manager",
-    title: "Lucrasoft ICT Groep (DEPOT)",
-  },
-  {
-    quote: "She naturally assumed the role of leader and motivator within the team.",
-    author: "Project Manager",
-    title: "Lucrasoft ICT Groep (DEPOT)",
-  },
-  {
     quote: "Ms. Heijkoop performed all tasks to our complete satisfaction and made a positive contribution to our organization.",
     author: "IT Manager",
     title: "M. Flinterman MSc",
@@ -58,18 +48,18 @@ export const recommendationQuotes: RecommendationQuote[] = [
 
 export const fullRecommendations: FullRecommendation[] = [
   {
-    id: "rec-1-mod",
-    company: "Ministry of Defence",
-    role: "Full-stack Software Development Intern",
-    date: "July 2025",
-    pdfUrl: "/documents/recommendations/Recommendation_MOD_Internship.pdf", // <--- PLAATS HIER DE PDF
-  },
-  {
     id: "rec-2-lucrasoft",
     company: "Lucrasoft ICT Groep (DEPOT)",
     role: "Full-stack Software Development, Scrum Coordinator",
-    date: "August 2025",
+    date: "February 2025",
     pdfUrl: "/documents/recommendations/Recommendation_Lucrasoft_DEPOT.pdf", // <--- PLAATS HIER DE PDF
+  },
+  {
+    id: "rec-1-mod",
+    company: "Ministry of Defence",
+    role: "Full-stack Software Development Intern",
+    date: "January 2024",
+    pdfUrl: "/documents/recommendations/Recommendation_MOD_Internship.pdf", // <--- PLAATS HIER DE PDF
   },
   // Voeg meer volledige aanbevelingen toe!
 ];

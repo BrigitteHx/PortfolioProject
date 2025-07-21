@@ -45,7 +45,7 @@ export const projectsData: ProjectItem[] = [
     ],
     imageUrl: "/depot-simulator-screenshot.png",
     liveDemoUrl: "https://brigittehx.github.io/DemoDepot/",
-    githubUrl: "https://github.com/BrigitteHx/20WekenProject.git", // GitHub URL blijft hier, voor als je die toch wilt laten zien
+    githubUrl: "https://github.com/BrigitteHx/DemoDepot", // GitHub URL blijft hier, voor als je die toch wilt laten zien
     linkedinPostUrl: "https://www.linkedin.com/posts/activity-7295882286145720320-9QyP?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAEKSdeUByppUsmVdIKsQNwpm25ja1zt_st8", // <--- NIEUWE LINKEDIN POST URL
     downloadPdfUrl: "/documents/opleverdocument.pdf", // <--- NIEUWE PDF DOWNLOAD URL (Plaats je PDF hier!)
     isFeatured: true,
@@ -74,7 +74,6 @@ export const projectsData: ProjectItem[] = [
     ],
     imageUrl: "/portfolio-screenshot.png", // <--- PLAATS HIER EEN SCREENSHOT VAN JE EIGEN PORTFOLIO
     githubUrl: "https://github.com/BrigitteHx/PortfolioProject", // <--- LINK NAAR JE PORTFOLIO REPO
-    downloadPdfUrl: "/documents/Brigitte_Heijkoop_CV.pdf", // <--- LINK NAAR JE CV PDF
     liveDemoUrl: "XXX",
     isFeatured: false, // Dit is geen "featured" project op dezelfde manier als de simulator
   },
