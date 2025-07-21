@@ -14,7 +14,7 @@ export interface TimelineEntry {
 export const experienceData: TimelineEntry[] = [
   {
     id: "exp-1",
-    title: "Heden",
+    title: "Juli 2025 - Now",
     content: (
       <div>
         <p className="text-neutral-800 dark:text-neutral-200 text-sm font-normal mb-2">
@@ -32,9 +32,10 @@ export const experienceData: TimelineEntry[] = [
       </div>
     ),
   },
+
   {
     id: "exp-2",
-    title: "2025 - Heden",
+    title: "September 2025 - Now",
     content: (
       <div>
         <p className="text-neutral-800 dark:text-neutral-200 text-sm font-normal mb-2">
@@ -50,24 +51,10 @@ export const experienceData: TimelineEntry[] = [
       </div>
     ),
   },
-  {
-    id: "exp-udemy-minimal-api-2025", // Nieuwe ID
-    title: "2025",
-    content: (
-      <div>
-        <p className="text-neutral-800 dark:text-neutral-200 text-sm font-normal mb-2">
-          <strong>Udemy Certificate: ASP.NET Core Minimal API - Full Build</strong>
-        </p>
-        <p className="text-neutral-700 dark:text-neutral-300 text-xs mb-4">
-          Comprehensive course on building robust APIs with ASP.NET Core Minimal API.
-        </p>
-      </div>
-    ),
-    certificateUrl: "https://www.udemy.com/certificate/UC-ceccf419-f6f0-4af2-bcce-7a56014a706f/",
-  },
+  
   {
     id: "exp-4",
-    title: "February - July 2025",
+    title: "February 2025 - July 2025",
     content: (
       <div>
         <p className="text-neutral-800 dark:text-neutral-200 text-sm font-normal mb-2">
@@ -89,23 +76,56 @@ export const experienceData: TimelineEntry[] = [
     ),
   },
   {
-    id: "exp-udemy-laravel-2024", // Nieuwe ID
-    title: "2024",
+    id: "exp-udemy-minimal-api-2025", // Nieuwe ID
+    title: "February 2025",
     content: (
       <div>
         <p className="text-neutral-800 dark:text-neutral-200 text-sm font-normal mb-2">
-          <strong>Udemy Certificate: Laravel (Beginner & Intermediate)</strong>
+          <strong>Udemy Certificate: ASP.NET Core Minimal API - Full Build</strong>
         </p>
         <p className="text-neutral-700 dark:text-neutral-300 text-xs mb-4">
-          In-depth learning of the Laravel PHP framework for web application development.
+          Comprehensive course on building robust APIs with ASP.NET Core Minimal API.
         </p>
       </div>
     ),
-    certificateUrl: "https://www.udemy.com/certificate/UC-3d3432be-cd2d-460d-9aee-9c9eafbf5db8/",
+    certificateUrl: "https://www.udemy.com/certificate/UC-ceccf419-f6f0-4af2-bcce-7a56014a706f/",
   },
+
+{
+    id: "exp-udemy-csharp-intermediate-2023", // Nieuwe ID
+    title: "February 2025",
+    content: (
+      <div>
+        <p className="text-neutral-800 dark:text-neutral-200 text-sm font-normal mb-2">
+          <strong>Udemy Certificate: C# Intermediate</strong>
+        </p>
+        <p className="text-neutral-700 dark:text-neutral-300 text-xs mb-4">
+          Intermediate level course focusing on advanced C# concepts and best practices.
+        </p>
+      </div>
+    ),
+    certificateUrl: "https://www.udemy.com/certificate/UC-a3ca029a-328f-48dd-8e94-a113a908191e/",
+  },
+
+  {
+    id: "exp-udemy-csharp-basics-2023", // Nieuwe ID
+    title: "February 2025",
+    content: (
+      <div>
+        <p className="text-neutral-800 dark:text-neutral-200 text-sm font-normal mb-2">
+          <strong>Udemy Certificate: C# Basics & OOP</strong>
+        </p>
+        <p className="text-neutral-700 dark:text-neutral-300 text-xs mb-4">
+          Foundational course covering C# basics and Object-Oriented Programming (OOP) principles.
+        </p>
+      </div>
+    ),
+    certificateUrl: "https://www.udemy.com/certificate/UC-c337f6af-511f-4650-bf75-2b986497b58f/",
+  },
+  
   {
     id: "exp-5",
-    title: "2024 – 2025",
+    title: "September 2024 - February 2025",
     content: (
       <div>
         <p className="text-neutral-800 dark:text-neutral-200 text-sm font-normal mb-2">
@@ -126,60 +146,10 @@ export const experienceData: TimelineEntry[] = [
       </div>
     ),
   },
-  {
-    id: "exp-3",
-    title: "2023 - 2025",
-    content: (
-      <div>
-        <p className="text-neutral-800 dark:text-neutral-200 text-sm font-normal mb-2">
-          <strong>MBO Level 4 Software Development @ Da Vinci College</strong>
-        </p>
-        <p className="text-neutral-700 dark:text-neutral-300 text-xs mb-4">
-Completed education with a focus on practical skills in software development, including both frontend and backend techniques.
-        </p>
-        <ul className="list-disc list-inside text-neutral-600 dark:text-neutral-400 text-xs space-y-1">
-          <li>Frontend development with HTML, CSS, and Bootstrap</li>
-          <li>Backend development using Laravel and MVC principles</li>
-          <li>Database design and management with MySQL and phpMyAdmin</li>
-          <li>Version control with Git and GitHub</li>
-          <li>User Experience Design (UX) and collaboration skills</li>
-        </ul>
-      </div>
-    ),
-  },
-  {
-    id: "exp-udemy-csharp-intermediate-2023", // Nieuwe ID
-    title: "2023",
-    content: (
-      <div>
-        <p className="text-neutral-800 dark:text-neutral-200 text-sm font-normal mb-2">
-          <strong>Udemy Certificate: C# Intermediate</strong>
-        </p>
-        <p className="text-neutral-700 dark:text-neutral-300 text-xs mb-4">
-          Intermediate level course focusing on advanced C# concepts and best practices.
-        </p>
-      </div>
-    ),
-    certificateUrl: "https://www.udemy.com/certificate/UC-a3ca029a-328f-48dd-8e94-a113a908191e/",
-  },
-  {
-    id: "exp-udemy-csharp-basics-2023", // Nieuwe ID
-    title: "2023",
-    content: (
-      <div>
-        <p className="text-neutral-800 dark:text-neutral-200 text-sm font-normal mb-2">
-          <strong>Udemy Certificate: C# Basics & OOP</strong>
-        </p>
-        <p className="text-neutral-700 dark:text-neutral-300 text-xs mb-4">
-          Foundational course covering C# basics and Object-Oriented Programming (OOP) principles.
-        </p>
-      </div>
-    ),
-    certificateUrl: "https://www.udemy.com/certificate/UC-c337f6af-511f-4650-bf75-2b986497b58f/",
-  },
+
   {
     id: "exp-6",
-    title: "2023 – 2024",
+    title: "August 2023 - January 2024",
     content: (
       <div>
         <p className="text-neutral-800 dark:text-neutral-200 text-sm font-normal mb-2">
@@ -198,5 +168,44 @@ Completed education with a focus on practical skills in software development, in
         </ul>
       </div>
     ),
-  }
+  },
+
+  {
+    id: "exp-3",
+    title: "August 2023 - June 2025",
+    content: (
+      <div>
+        <p className="text-neutral-800 dark:text-neutral-200 text-sm font-normal mb-2">
+          <strong>MBO Level 4 Software Development @ Da Vinci College</strong>
+        </p>
+        <p className="text-neutral-700 dark:text-neutral-300 text-xs mb-4">
+Completed education with a focus on practical skills in software development, including both frontend and backend techniques.
+        </p>
+        <ul className="list-disc list-inside text-neutral-600 dark:text-neutral-400 text-xs space-y-1">
+          <li>Frontend development with HTML, CSS, and Bootstrap</li>
+          <li>Backend development using Laravel and MVC principles</li>
+          <li>Database design and management with MySQL and phpMyAdmin</li>
+          <li>Version control with Git and GitHub</li>
+          <li>User Experience Design (UX) and collaboration skills</li>
+        </ul>
+      </div>
+    ),
+  },
+
+  {
+    id: "exp-udemy-laravel-2024", // Nieuwe ID
+    title: "April 2024",
+    content: (
+      <div>
+        <p className="text-neutral-800 dark:text-neutral-200 text-sm font-normal mb-2">
+          <strong>Udemy Certificate: Laravel (Beginner & Intermediate)</strong>
+        </p>
+        <p className="text-neutral-700 dark:text-neutral-300 text-xs mb-4">
+          In-depth learning of the Laravel PHP framework for web application development.
+        </p>
+      </div>
+    ),
+    certificateUrl: "https://www.udemy.com/certificate/UC-3d3432be-cd2d-460d-9aee-9c9eafbf5db8/",
+  },
+  
 ];
