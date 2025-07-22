@@ -3,17 +3,18 @@
 
 import React from "react";
 import { motion, cubicBezier } from "framer-motion";
-import { skillsData, SkillCategory } from "@/data/skills"; 
-import { Dot } from "lucide-react"; 
+import { skillsData, SkillCategory } from "@/data/skills"; // `SkillCategory` is nodig, dus niet verwijderen
+import { Dot } from "lucide-react";
+
 interface SkillsProps {
-  data: SkillCategory[];
+  data: SkillCategory[]; // Type de props correct
 }
 
-export default function Skills({ data }: SkillsProps) {
+export default function Skills({ data }: SkillsProps) { // Gebruik de SkillsProps interface
   return (
     <section className="py-16 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-950 dark:to-black min-h-screen">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-5xl md:text-6xl font-extrabold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">
+        <h2 className="text-5xl md:text-6xl font-extrabold text-center mb-16 text-gray-800 dark:text-white">
           My Toolkit
         </h2>
 
@@ -46,35 +47,36 @@ const SkillCard: React.FC<SkillCardProps> = ({ category, index }) => {
       variants={cardVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }} 
+      viewport={{ once: true, amount: 0.2 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       className="relative p-0.5 rounded-xl transition-all duration-300 ease-out
-                 bg-gradient-to-br from-blue-200 via-transparent to-purple-200 dark:from-gray-700 dark:to-gray-900 group"
+                 bg-gradient-to-br from-blue-500 via-transparent to-purple-500
+                 dark:from-blue-700 dark:to-purple-900 group"
     >
       <div className="absolute inset-0 rounded-xl pointer-events-none z-0">
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: isHovered ? 1 : 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
-          className="absolute inset-0 rounded-xl bg-[linear-gradient(to_right,rgba(134,239,172,0.3),rgba(59,130,246,0.3),rgba(147,51,234,0.3),rgba(251,189,86,0.3))] opacity-0 group-hover:opacity-100 animate-border-pulse"
+          className="absolute inset-0 rounded-xl bg-[linear-gradient(to_right,rgba(60,0,255,0.4),rgba(100,0,255,0.4),rgba(60,0,255,0.4))] dark:bg-[linear-gradient(to_right,rgba(60,0,255,0.5),rgba(168,85,247,0.5),rgba(60,0,255,0.5))] animate-border-pulse transition-opacity duration-300 z-0 opacity-0 group-hover:opacity-100"
         ></motion.div>
       </div>
 
-      <div className="relative bg-white dark:bg-neutral-900 rounded-xl h-full p-6 border border-gray-100 dark:border-gray-800 flex flex-col justify-between
-                      card-shadow-medium-complex transition-transform duration-300 transform group-hover:scale-[1.01]">
+      <div className="relative bg-white dark:bg-gray-800 rounded-xl h-full p-6 md:p-8 border border-gray-200 dark:border-gray-700 flex flex-col justify-between
+                      shadow-custom-medium transition-transform duration-300 transform group-hover:scale-[1.01] group-hover:shadow-custom-strong">
         <h3 className="text-2xl font-bold mb-4 text-blue-600 dark:text-blue-400">
           {category.category}
         </h3>
         <ul className="space-y-2 text-gray-700 dark:text-gray-300 flex-grow">
           {category.skills.map((skill, i) => (
             <li key={i} className="flex items-center text-lg">
-              <Dot size={24} className="text-purple-500 mr-1 flex-shrink-0" /> 
+              <Dot size={24} className="text-purple-500 mr-1 flex-shrink-0" />
               <span>{skill}</span>
             </li>
           ))}
         </ul>
-        <div className="mt-4 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-100 dark:border-gray-800 pt-3">
+        <div className="mt-4 text-sm text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700 pt-3">
           {category.skills.length} skills
         </div>
       </div>

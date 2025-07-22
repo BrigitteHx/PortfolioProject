@@ -1,20 +1,23 @@
 // app/contact/page.tsx
-"use client";
+"use client"; // Deze component gebruikt useState en Formspree, dus Client Component
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
-import { Mail, Linkedin, Phone, CheckCircle, XCircle, Github } from 'lucide-react'; 
+import Link from 'next/link'; // Link is niet direct gebruikt, maar kan handig zijn
+import { Mail, Linkedin, Phone, CheckCircle, XCircle } from 'lucide-react'; // Icons
 
 export default function ContactPage() {
   const [formStatus, setFormStatus] = useState<'' | 'success' | 'error'>('');
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
-  // https://formspree.io/
-  const FORM_ENDPOINT = "https://formspree.io/f/mwpqvnrl"; 
+  // Jouw EIGEN Formspree Endpoint URL
+  const FORM_ENDPOINT = "https://formspree.io/f/mwpqvnrl"; // VERVANG DEZE NIET MEER!
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormStatus(''); 
+    setFormStatus(''); // Reset status
+
+    // Simpele validatie
     if (!formData.name || !formData.email || !formData.message) {
       setFormStatus('error');
       return;
@@ -32,9 +35,10 @@ export default function ContactPage() {
 
       if (response.ok) {
         setFormStatus('success');
-        setFormData({ name: '', email: '', message: '' }); 
+        setFormData({ name: '', email: '', message: '' }); // Formulier leegmaken
       } else {
         setFormStatus('error');
+        // Optioneel: Log de response.json() voor debugging
       }
     } catch (error) {
       console.error('Form submission error:', error);
@@ -51,13 +55,14 @@ export default function ContactPage() {
     <div className="py-16 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-lg shadow-lg">
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-5xl md:text-6xl font-extrabold mb-4 text-gray-800 dark:text-white">
-          Let's Connect!
+          Let&apos;s Connect!
         </h1>
         <p className="text-xl text-gray-600 dark:text-gray-300 mb-12">
           I&apos;m always open to new opportunities, collaborations, and interesting conversations.
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 text-left items-start">
+          {/* Contact Details */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -78,18 +83,8 @@ export default function ContactPage() {
             <div className="flex items-center gap-4 text-gray-700 dark:text-gray-300">
               <Mail size={28} className="text-blue-600 dark:text-blue-400 flex-shrink-0" />
               <div>
-                <p className="font-semibold text-lg">Business Email</p>
+                <p className="font-semibold text-lg">Work Email</p>
                 <a href="mailto:brigitte.dev@gmail.com" className="text-base hover:underline break-all">brigitte.dev@gmail.com</a>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 text-gray-700 dark:text-gray-300">
-              <Github size={28} className="text-blue-600 dark:text-blue-400 flex-shrink-0" />
-              <div>
-                <p className="font-semibold text-lg">View on GitHub</p>
-                <Link href="https://github.com/BrigitteHx" target="_blank" rel="noopener noreferrer" className="text-base hover:underline break-all">
-                  github.com/BrigitteHx
-                </Link>
               </div>
             </div>
 
@@ -110,6 +105,7 @@ export default function ContactPage() {
             </div>
           </motion.div>
 
+          {/* Contact Formulier */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -167,6 +163,7 @@ export default function ContactPage() {
               </motion.button>
             </form>
 
+            {/* Formulier Statusberichten */}
             <AnimatePresence>
               {formStatus === 'success' && (
                 <motion.div

@@ -2,22 +2,22 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence, cubicBezier } from "framer-motion";
-import Link from "next/link";
-import { ChevronDown, FileText } from "lucide-react"; 
-import { InfiniteMovingCards } from "@/components/ui/InfiniteMovingCards"; 
-import { recommendationQuotes, fullRecommendations, FullRecommendation } from "@/data/recommendations"; 
+import { motion, AnimatePresence } from "framer-motion";
+// Link is hier niet nodig in de hoofdcomponent, dus verwijderd.
+import { ChevronDown, FileText } from "lucide-react"; // Icons
+import { InfiniteMovingCards } from "@/components/ui/InfiniteMovingCards"; // Importeer je nieuwe component
+import { recommendationQuotes, fullRecommendations, FullRecommendation } from "@/data/recommendations"; // `FullRecommendation` toegevoegd
 
-interface RecommendationsProps {}
-
-export default function Recommendations({}: RecommendationsProps) {
+// Geen props voor Recommendations component, dus geen interface
+export default function Recommendations({}) { // Geen props
   return (
-    <section className="py-16 bg-neutral-100 dark:bg-neutral-950 min-h-screen"> 
+    <section className="py-16 bg-gray-50 dark:bg-gray-950 min-h-screen">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-5xl md:text-6xl font-extrabold text-center mb-16 text-gray-800 dark:text-white">
           What Others Say
         </h2>
 
+        {/* Infinite Moving Cards voor Quotes */}
         <div className="mb-16">
           <h3 className="text-3xl font-bold text-center mb-8 text-gray-700 dark:text-gray-300">Quick Impressions</h3>
           <InfiniteMovingCards
@@ -29,6 +29,7 @@ export default function Recommendations({}: RecommendationsProps) {
           />
         </div>
 
+        {/* Accordion voor Volledige Aanbevelingen (PDF Downloads) */}
         <div className="mb-16">
           <h3 className="text-3xl font-bold text-center mb-8 text-gray-700 dark:text-gray-300">Full Recommendations (PDF)</h3>
           <div className="max-w-3xl mx-auto space-y-4">
@@ -54,7 +55,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ recommendation, index }) 
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease: cubicBezier(0.25, 0.1, 0.25, 1) }}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
       viewport={{ once: true, amount: 0.3 }}
       className="bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 overflow-hidden"
     >
@@ -80,7 +81,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ recommendation, index }) 
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }} 
+            transition={{ duration: 0.3, ease: "easeInOut" }}
             className="p-5 border-t border-gray-200 dark:border-gray-700"
           >
             <p className="text-gray-700 dark:text-gray-300 mb-4">

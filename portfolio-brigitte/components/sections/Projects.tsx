@@ -5,9 +5,9 @@ import React, { useState } from "react";
 import { motion, AnimatePresence, cubicBezier } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Github, ExternalLink, BookOpen, Check, Linkedin } from "lucide-react";
+import { Github, ExternalLink, BookOpen, Check, Linkedin } from "lucide-react"; // Zorg dat Linkedin hier staat
 
-import { projectsData, ProjectItem } from "@/data/projects";
+import { projectsData, ProjectItem } from "@/data/projects"; // ProjectsData is geen type, dus geen `ProjectItem` in de import
 
 interface ProjectsProps {
   data: ProjectItem[];
@@ -22,6 +22,7 @@ export default function Projects({ data }: ProjectsProps) {
         </h2>
 
         {data.map((project, index) => (
+          // _index wordt gebruikt omdat index zelf niet direct nodig is in ProjectCard, maar wel voor staggered delay
           <ProjectCard key={project.id} project={project} index={index} />
         ))}
       </div>
@@ -31,7 +32,7 @@ export default function Projects({ data }: ProjectsProps) {
 
 interface ProjectCardProps {
   project: ProjectItem;
-  index: number;
+  index: number; // Index is nodig voor staggered delay animatie
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
@@ -58,7 +59,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         boxShadow: project.isFeatured ? '0 0 40px rgba(60, 0, 255, 0.3), 0 0 20px rgba(100, 0, 255, 0.2)' : 'none',
       }}
     >
-
+      {/* GLOWING BORDER EFFECT ON HOVER */}
       <AnimatePresence>
         {isHovered && (
           <motion.div
@@ -71,18 +72,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
       </AnimatePresence>
 
       <div className="relative bg-white dark:bg-gray-800 rounded-xl h-full p-8 md:p-10 border border-gray-200 dark:border-gray-700 flex flex-col md:flex-row gap-8 shadow-md transition-transform duration-300 transform group-hover:scale-[1.01] group-hover:shadow-xl">
-
-        <div className="flex-shrink-0 md:w-1/3 lg:w-1/4"> 
+        {/* Project Afbeelding (VERTICAAL FORMAAT) */}
+        <div className="flex-shrink-0 md:w-1/3 lg:w-1/4">
           <Image
             src={project.imageUrl}
             alt={project.title}
-            width={300} 
-            height={500} 
+            width={300}
+            height={500}
             className="rounded-lg object-cover w-full h-auto max-h-[400px] md:max-h-full shadow-md border border-gray-200 dark:border-gray-700"
           />
         </div>
 
-        <div className="flex-grow md:w-2/3 lg:w-3/4"> 
+        {/* Project Details */}
+        <div className="flex-grow md:w-2/3 lg:w-3/4">
           <h3 className="text-3xl font-bold mb-2 text-gray-900 dark:text-white">
             {project.title}
           </h3>
@@ -91,6 +93,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           </p>
           {project.description}
 
+          {/* Technologies */}
           <div className="mt-6">
             <h4 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">Technologies Used:</h4>
             <div className="flex flex-wrap gap-2">
@@ -102,6 +105,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             </div>
           </div>
 
+          {/* Realized Features */}
           <div className="mt-6">
             <h4 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">Key Features:</h4>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700 dark:text-gray-300 text-base">
@@ -114,50 +118,36 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
             </ul>
           </div>
 
-<div className="mt-8 flex flex-wrap gap-4">
-  {project.liveDemoUrl && (
-    <Link
-      href={project.liveDemoUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-    >
-      <ExternalLink size={20} />
-      {project.id === "project-2-portfolio" ? "This Website!" : "Live Demo"}
-    </Link>
-  )}
-  {project.linkedinPostUrl && (
-    <Link
-      href={project.linkedinPostUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center gap-2 px-6 py-3 bg-gray-700 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-    >
-      <Linkedin size={20} /> LinkedIn Post
-    </Link>
-  )}
-  {project.githubUrl && (
-    <Link
-      href={project.githubUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center gap-2 px-6 py-3 bg-gray-700 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-    >
-      <Github size={20} /> GitHub Repo
-    </Link>
-  )}
-  {project.downloadPdfUrl && (
-    <a
-      href={project.downloadPdfUrl}
-      download
-      className="flex items-center gap-2 px-6 py-3 bg-gray-700 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-    >
-      <BookOpen size={20} /> Download Document
-    </a>
-  )}
-</div>
-</div>
-</div>  
-</motion.div>
-);
+          {/* Project Links */}
+          <div className="mt-8 flex flex-wrap gap-4">
+            {project.liveDemoUrl && (
+              <Link href={project.liveDemoUrl} target="_blank" rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <ExternalLink size={20} />
+                {project.id === "project-2-portfolio" ? "This Website!" : "Live Demo"}
+              </Link>
+            )}
+            {project.linkedinPostUrl && (
+              <Link href={project.linkedinPostUrl} target="_blank" rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-gray-700 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <Linkedin size={20} /> LinkedIn Post
+              </Link>
+            )}
+            {project.githubUrl && (
+              <Link href={project.githubUrl} target="_blank" rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-gray-700 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <Github size={20} /> GitHub Repo
+              </Link>
+            )}
+            {project.downloadPdfUrl && (
+              <a href={project.downloadPdfUrl} download
+                 className="flex items-center gap-2 px-6 py-3 bg-gray-700 text-white rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                <BookOpen size={20} /> Download Document
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
 }
