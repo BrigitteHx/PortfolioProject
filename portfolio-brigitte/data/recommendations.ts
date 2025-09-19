@@ -39,6 +39,11 @@ export const recommendationQuotes: RecommendationQuote[] = [
     author: "IT Manager",
     title: "M. Flinterman MSc",
   },
+  {
+    quote: "Brigitte is a pleasure to work with. She's dedicated, detail-oriented, and always willing to help, ensuring tasks are completed efficiently and on time.",
+    author: "Former classmate",
+    title: "Esma K.",
+  },
   // {
   //   quote: "XXX",
   //   author: "XXX",
