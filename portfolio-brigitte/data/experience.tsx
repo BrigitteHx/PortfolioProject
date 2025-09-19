@@ -51,6 +51,22 @@ export const experienceData: TimelineEntry[] = [
       </div>
     ),
   },
+
+    {
+    id: "exp-udemy-business-analysis-2025", // Nieuwe ID
+    title: "April 2024",
+    content: (
+      <div>
+        <p className="text-neutral-800 dark:text-neutral-200 text-sm font-normal mb-2">
+          <strong>Udemy Certificate: Fundamentals of Business Analysis</strong>
+        </p>
+        <p className="text-neutral-700 dark:text-neutral-300 text-xs mb-4">
+          In-depth learning of the Laravel PHP framework for web application development.
+        </p>
+      </div>
+    ),
+    certificateUrl: "https://www.udemy.com/certificate/UC-41166b8c-cf4c-47be-b473-b90fb44614df/",
+  },
   
   {
     id: "exp-4",
