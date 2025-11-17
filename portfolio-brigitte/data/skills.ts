@@ -29,7 +29,10 @@ export const skillsData: SkillCategory[] = [
       "Node.js",
       "Bootstrap",
       "MVVM",
-      "MVC"
+      "MVC",
+      "RESTful API design",
+      "Laravel",
+      "Flask",
     ]
   },
   {
@@ -37,7 +40,12 @@ export const skillsData: SkillCategory[] = [
     skills: [
       "MySQL",
       "Entity Framework Core",
-      "JSON"
+      "JSON",
+      "Nginx Containerisation",
+      "XML",
+      "SQLAlchemy as ORM",
+      "PostgreSQL",
+      "Docker volumes",
     ]
   },
   {
@@ -56,7 +64,8 @@ export const skillsData: SkillCategory[] = [
       "GitLab",
       "Azure DevOps",
       "Git branching strategies",
-      "CI/CD Pipelines"
+      "CI/CD Pipelines",
+      "Docker and Docker Compose",
     ]
   },
   {
