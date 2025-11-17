@@ -171,8 +171,6 @@ export default function AboutPage() {
                     { language: "English", rating: 4 },
                     { language: "German", rating: 3 },
                     { language: "French", rating: 3 },
-                    { language: "Italian", rating: 1 },
-                    { language: "Portuguese", rating: 1 },
                 ].map((lang, index) => (
                     <motion.div
                         key={lang.language}
